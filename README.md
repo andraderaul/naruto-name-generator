@@ -3,6 +3,18 @@ Primeiramente, foi necessário realizar uma raspagem de dados(scraping) do segui
 
 O próximo passo é treinar a rede neural recorrente com uma camada LSTM nos dados. 
 Segue alguns exemplos de nomes:
+* obuta
+* onaha
+* atsuni
+* uzuna
+* oiho
+* ashiri
+* orei
+* yuuraku
+* kuronba
+* ouso
+* mokaku
+* enda
 
 Até que o resultado não foi ruim, dado a quantidade de dados, boa parte dos nomes são querentes.
 
