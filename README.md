@@ -1,7 +1,8 @@
 # naruto-name-generator 
 Primeiramente, foi necessário realizar uma raspagem de dados(scraping) do seguinte site [leafninja](http://www.leafninja.com/), pois não encontrei nenhuma API de Naruto. Em seguida, os dados coletados foram tratados/limpados depois convertidos de forma que a rede neural conseguisse utilizar.
 
-O próximo passo é treinar a rede neural recorrente com uma camada LSTM nos dados. 
+O próximo passo é treinar a rede neural recorrente com uma camada LSTM nos dados, isso será utilizado para gerar novos nomes.
+
 Segue alguns exemplos de nomes:
 * obuta
 * onaha
