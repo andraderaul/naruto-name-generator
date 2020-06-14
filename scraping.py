@@ -73,5 +73,5 @@ def get_all_names():
 
     all_characters_names = list(set(all_characters_names))
     print('all characters name len:', len(all_characters_names))
-    # write_file(all_characters_names)
+    write_file(all_characters_names)
     return all_characters_names

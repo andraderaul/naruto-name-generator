@@ -5,9 +5,9 @@ import numpy as np
 import scraping
 from manage_file import read_file
 
-# names = read_file()
-# if(len(names[0]) == 0):
-names = scraping.get_all_names()
+names = read_file()
+if(len(names[0]) == 0):
+    names = scraping.get_all_names()
 
 # names to one-hot encode
 char_to_index = dict((chr(i+96), i) for i in range(1, 27))
