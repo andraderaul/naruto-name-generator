@@ -1,0 +1,5 @@
+requests
+bs4
+numpy
+Keras
+tweepy
