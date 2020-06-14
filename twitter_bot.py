@@ -60,7 +60,7 @@ def bot_run():
     while True:
         tweets()
         search_tweet_retweet()
-        sleep(60)
+        sleep(INTERVAL)
 
 
 bot_run()
