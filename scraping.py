@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import requests
 import bs4
+from manage_file import write_file
 
 alphabet = ['A', 'B', 'C', 'D', 'E',  'F', 'G', 'H', 'I',
             'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
@@ -37,7 +38,7 @@ def _filter(all_tag_a):
 
 
 def _get_all_characters_names_async(url):
-    print(url)
+    print('url:', url)
     res = requests.get(url)
     res.encoding = 'utf-8'
     try:
@@ -45,7 +46,7 @@ def _get_all_characters_names_async(url):
         soup = bs4.BeautifulSoup(res.text, features="html.parser")
         all_tag_a = soup.find_all("a")
         characters_names = _filter(all_tag_a)
-        print(characters_names)
+        print('characters:', characters_names)
         return characters_names
     except Exception as exc:
         print(u'Catch Exception!!!')
@@ -54,6 +55,7 @@ def _get_all_characters_names_async(url):
 
 
 def get_all_names():
+    print('scrapping')
     all_characters_names = []
     for letter in alphabet:
         characters_names = _get_all_characters_names_async(
@@ -70,6 +72,6 @@ def get_all_names():
     all_characters_names = [*all_characters_names, *characters_names]
 
     all_characters_names = list(set(all_characters_names))
-    print(all_characters_names)
-    print(len(all_characters_names))
+    print('all characters name len:', len(all_characters_names))
+    write_file(all_characters_names)
     return all_characters_names

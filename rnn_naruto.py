@@ -3,8 +3,11 @@ from keras.layers import LSTM, Dense
 from keras.models import Sequential
 import numpy as np
 import scraping
+from manage_file import read_file
 
-names = scraping.get_all_names()
+names = read_file()
+if(len(names[0]) == 0):
+    names = scraping.get_all_names()
 
 # names to one-hot encode
 char_to_index = dict((chr(i+96), i) for i in range(1, 27))
@@ -30,12 +33,16 @@ for i in range(m):
             Y[i, j, char_to_index[name[j+1]]] = 1
 
 # build the model: a single LSTM
-print('Build model...')
-model = Sequential()
-model.add(LSTM(128, input_shape=(max_char, char_dim), return_sequences=True))
-model.add(Dense(char_dim, activation='softmax'))
 
-model.compile(loss='categorical_crossentropy', optimizer='adam')
+
+def build_model():
+    print('Build model...')
+    model = Sequential()
+    model.add(LSTM(128, input_shape=(max_char, char_dim), return_sequences=True))
+    model.add(Dense(char_dim, activation='softmax'))
+
+    model.compile(loss='categorical_crossentropy', optimizer='adam')
+    return model
 
 
 def make_name(model):
@@ -59,24 +66,27 @@ def make_name(model):
         if character == '.':
             end = True
 
-    print(''.join(name))
+    return ''.join(name)
 
 
-def generate_name_loop(epoch, _):
-    if epoch % 25 == 0:
+# def generate_name_loop(epoch, _):
+#     if epoch % 25 == 0:
 
-        print('Names generated after epoch %d:' % epoch)
+#         print('Names generated after epoch %d:' % epoch)
 
-        for i in range(3):
-            make_name(model)
-        print()
+#         for i in range(3):
+#             make_name(model)
+#         print()
 
 
-name_generator = LambdaCallback(on_epoch_end=generate_name_loop)
+def fit_model():
+    #name_generator = LambdaCallback(on_epoch_end=generate_name_loop)
+    model = build_model()
+    model.fit(X, Y, batch_size=64, epochs=300, verbose=0)
+    return model
 
-model.fit(X, Y, batch_size=64, epochs=300,
-          callbacks=[name_generator], verbose=0)
 
-print('the first 20 names generated')
-for i in range(20):
-    make_name(model)
+def get_names(model):
+    names = [make_name(model) for i in range(50)]
+    names_more = list(filter(lambda name: len(name) > 4, names))
+    return names_more
