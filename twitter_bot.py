@@ -1,4 +1,4 @@
-from credentials import *
+#from credentials import *
 from os import environ
 import datetime
 from time import sleep
