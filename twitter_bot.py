@@ -1,4 +1,5 @@
 from credentials import *
+from os import environ
 import datetime
 from time import sleep
 import tweepy
@@ -8,8 +9,12 @@ import sys
 
 INTERVAL = 60 * 60 * 6  # tweet every 6 hours
 
-auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(access_token, access_token_secret)
+# auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+# auth.set_access_token(access_token, access_token_secret)
+auth = tweepy.OAuthHandler(environ['CONSUMER_KEY'],
+                           environ['CONSUMER_SECRET'])
+auth.set_access_token(environ['ACCESS_TOKEN'],
+                      environ['ACCESS_TOKEN_SECRET'])
 api = tweepy.API(auth)
 
 model = rnn_naruto.fit_model()  # rnn
