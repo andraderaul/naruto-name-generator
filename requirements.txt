@@ -1,6 +1,6 @@
 requests
 bs4
 numpy
-tensorflow==1.0
+tensorflow==1.15.2
 Keras
 tweepy
