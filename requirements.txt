@@ -1,5 +1,7 @@
 requests
+beautifulsoup4
 bs4
 numpy
+tensorflow
 Keras
 tweepy
