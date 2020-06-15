@@ -59,7 +59,7 @@ def bot_run():
     print('bot running')
     while True:
         tweets()
-        search_tweet_retweet()
+        # search_tweet_retweet()
         sleep(INTERVAL)
 
 
