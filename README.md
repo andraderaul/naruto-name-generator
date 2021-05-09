@@ -1,5 +1,5 @@
 # naruto-name-generator
-Nesse repositório contém a implementação de um Bot para o twitter, a ideia principal do Bot é realizar tweets com base nos nomes de personagens do anime Naruto.
+Nesse repositório contém a implementação de um [Bot](https://twitter.com/rnn_narubot) para o twitter, a ideia principal do Bot é realizar tweets com base nos nomes de personagens do anime Naruto.
 
 Primeiramente, foi necessário realizar uma raspagem de dados(scraping) do seguinte site [leafninja](http://www.leafninja.com/), pois não encontrei nenhuma API de Naruto. Em seguida, os dados coletados foram tratados/limpados depois convertidos de forma que a rede neural conseguisse utilizar.
 
